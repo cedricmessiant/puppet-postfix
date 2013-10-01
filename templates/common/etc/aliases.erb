@@ -16,4 +16,8 @@ ftp: root
 abuse: root
 noc: root
 security: root
-root: <%= email %>
+
+# These aliases are managed by Puppet
+<% aliases.each do |key, value| -%>
+<%= key %>: <%= value %>
+<% end -%>

@@ -1,5 +1,5 @@
 name 'puppet-postfix'
-version '0.9'
+version '0.0.9'
 
 author 'Cédric Messiant'
 license 'GPLv2'

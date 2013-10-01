@@ -1,10 +1,10 @@
 class postfix (
-  $email = $postfix::params::email,
-  $host  = $postfix::params::host
-) inherits postfix::params {
+  $additional_destinations = $postfix::params::additional_destinations,
+  $aliases = $postfix::params::aliases,
+  $relayhost  = $postfix::params::relayhost',
+  $smtpd_recipient_restrictions = $postfix::params::smtpd_recipient_restrictions
 
-  validate_string(hiera('email'))
-  validate_string(hiera('host'))
+) inherits postfix::params {
 
   exec { 'newaliases':
     command     => 'newaliases',
@@ -12,7 +12,7 @@ class postfix (
   }
 
   postfix::aliases { '/etc/aliases':
-    email => $email,
+    aliases => $aliases,
   }
 
   file { '/etc/mailname':
@@ -26,7 +26,9 @@ class postfix (
   }
 
   postfix::relayhost { '/etc/postfix/main.cf':
-    host => $host,
+    additional_destinations      => $additional_destinations,
+    smtpd_recipient_restrictions => $smtpd_recipient_restrictions
+    relayhost                    => $relayhost,
   }
 
   package { [

@@ -1,4 +1,7 @@
-define postfix::relayhost($host) {
+define postfix::relayhost(
+  $additional_destinations,
+  $smtpd_recipient_restrictions,
+  $relayhost) {
   file { $name:
     owner   => 'root',
     group   => 'root',

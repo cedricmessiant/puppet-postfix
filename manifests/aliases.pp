@@ -1,4 +1,4 @@
-define postfix::aliases($email) {
+define postfix::aliases($aliases) {
   file { $name:
     owner   => 'root',
     group   => 'root',

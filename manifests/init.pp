@@ -1,9 +1,8 @@
 class postfix (
   $additional_destinations = $postfix::params::additional_destinations,
   $aliases = $postfix::params::aliases,
-  $relayhost  = $postfix::params::relayhost',
+  $relayhost  = $postfix::params::relayhost,
   $smtpd_recipient_restrictions = $postfix::params::smtpd_recipient_restrictions
-
 ) inherits postfix::params {
 
   exec { 'newaliases':

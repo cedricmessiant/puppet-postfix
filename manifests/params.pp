@@ -1,6 +1,6 @@
-class postfix::params {
+  class postfix::params {
   case $::lsbdistcodename {
-    'squeeze' {
+    'squeeze': {
       $additional_destinations = hiera('additional_destinations', '')
       $aliases = hiera_hash('aliases')
       $relayhost  = hiera('relayhost', '')

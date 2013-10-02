@@ -26,7 +26,7 @@ class postfix (
 
   postfix::relayhost { '/etc/postfix/main.cf':
     additional_destinations      => $additional_destinations,
-    smtpd_recipient_restrictions => $smtpd_recipient_restrictions
+    smtpd_recipient_restrictions => $smtpd_recipient_restrictions,
     relayhost                    => $relayhost,
   }
 

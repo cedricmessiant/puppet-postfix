@@ -10,7 +10,7 @@
 # is /etc/mailname.
 #myorigin = /etc/mailname
 
-smtpd_banner = $myhostname ESMTP $mail_name (<%= lsbdistid -%>)
+smtpd_banner = $myhostname ESMTP $mail_name (<%= @lsbdistid -%>)
 biff = no
 
 # appending .domain is the MUA's job.
@@ -36,15 +36,15 @@ smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
 home_mailbox = Maildir/
 mail_spool_directory = /var/spool/mail/
 
-myhostname = <%= fqdn %>
-mydomain = <%= domain %>
+myhostname = <%= @fqdn %>
+mydomain = <%= @domain %>
 myorigin = $mydomain
 
 alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
 
-relayhost = <%= relayhost %>
-mydestination = $myhostname localhost.$mydomain localhost $mydomain <%= additional_destinations %>
+relayhost = <%= @relayhost %>
+mydestination = $myhostname localhost.$mydomain localhost $mydomain <%= @additional_destinations %>
 
 unknown_local_recipient_reject_code = 550
 mynetworks_style = host
@@ -64,4 +64,4 @@ maps_rbl_domains = relays.ordb.org, sbl.spamhaus.org, list.dsbl.org
 smtpd_helo_restrictions = reject_invalid_hostname,  permit
 smtpd_sender_restrictions = reject_unknown_sender_domain, reject_non_fqdn_sender, permit
 smtpd_client_restrictions = permit_mynetworks, reject_rbl_client, permit
-smtpd_recipient_restrictions = <%= smtpd_recipient_restrictions %>
+smtpd_recipient_restrictions = <%= @smtpd_recipient_restrictions %>

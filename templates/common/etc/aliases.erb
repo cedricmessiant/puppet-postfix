@@ -18,6 +18,6 @@ noc: root
 security: root
 
 # These aliases are managed by Puppet
-<% aliases.each do |key, value| -%>
+<% @aliases.each do |key, value| -%>
 <%= key %>: <%= value %>
 <% end -%>
